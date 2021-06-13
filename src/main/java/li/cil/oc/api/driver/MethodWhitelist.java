@@ -1,5 +1,6 @@
 package li.cil.oc.api.driver;
 
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
 /**
@@ -17,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
  * suppress inventory functionality if your TileEntity implements IInventory.
  * <p/>
  * To do so, implement this interface in the <em>environment</em> that you
- * return from your driver's {@link DriverBlock#createEnvironment(net.minecraft.world.World, BlockPos, net.minecraft.util.EnumFacing)}
+ * return from your driver's {@link DriverBlock#createEnvironment(net.minecraft.world.World, BlockPos, Direction)}
  * method, and provide the names of the allowed methods from {@link #whitelistedMethods()}.
  * <p/>
  * <em>Important</em>: if multiple drivers apply to a single block that each

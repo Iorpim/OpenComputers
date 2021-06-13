@@ -9,8 +9,8 @@ import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.inventory.IInventory
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Robot(playerInventory: InventoryPlayer, robot: tileentity.Robot) extends Player(playerInventory, robot) {
   val hasScreen: Boolean = robot.components.exists {
@@ -48,7 +48,7 @@ class Robot(playerInventory: InventoryPlayer, robot: tileentity.Robot) extends P
 
   private var lastSentBufferSize = -1
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def updateProgressBar(id: Int, value: Int) {
     super.updateProgressBar(id, value)
     if (id == 0) {
@@ -80,7 +80,7 @@ class Robot(playerInventory: InventoryPlayer, robot: tileentity.Robot) extends P
   class InventorySlot(container: Player, inventory: IInventory, index: Int, x: Int, y: Int) extends StaticComponentSlot(container, inventory, index, x, y, common.Slot.Any, common.Tier.Any) {
     def isValid: Boolean = robot.isInventorySlot(getSlotIndex)
 
-    @SideOnly(Side.CLIENT) override
+    @OnlyIn(Dist.CLIENT) override
     def isEnabled: Boolean = isValid && super.isEnabled
 
     override def getBackgroundLocation: ResourceLocation =

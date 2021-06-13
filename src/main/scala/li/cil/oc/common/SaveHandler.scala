@@ -23,7 +23,7 @@ import net.minecraft.util.math.ChunkPos
 import net.minecraft.world.World
 import net.minecraftforge.common.DimensionManager
 import net.minecraftforge.event.world.WorldEvent
-import net.minecraftforge.fml.common.eventhandler.EventPriority
+import net.minecraftforge.fml.common.Mod.EventBusSubscriberPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import org.apache.commons.lang3.JavaVersion
 import org.apache.commons.lang3.SystemUtils

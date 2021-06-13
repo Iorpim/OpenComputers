@@ -2,7 +2,7 @@ package li.cil.oc.client.renderer.markdown.segment.render
 
 import li.cil.oc.api.manual.ImageRenderer
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.client.renderer.OpenGlHelper
 import net.minecraft.client.renderer.RenderHelper
 import net.minecraft.item.ItemStack

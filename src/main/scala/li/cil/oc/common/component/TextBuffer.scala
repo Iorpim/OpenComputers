@@ -37,8 +37,8 @@ import net.minecraft.util.EnumHand
 import net.minecraftforge.event.world.ChunkEvent
 import net.minecraftforge.event.world.WorldEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 import scala.collection.convert.WrapAsScala._
@@ -361,19 +361,19 @@ class TextBuffer(val host: EnvironmentHost) extends AbstractManagedEnvironment w
     proxy.onBufferRawSetForeground(col, row, color)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def renderText: Boolean = relativeLitArea != 0 && proxy.render()
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def renderWidth: Int = TextBufferRenderCache.renderer.charRenderWidth * getViewportWidth
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def renderHeight: Int = TextBufferRenderCache.renderer.charRenderHeight * getViewportHeight
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def setRenderingEnabled(enabled: Boolean): Unit = isRendering = enabled
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def isRenderingEnabled: Boolean = isRendering
 
   override def keyDown(character: Char, code: Int, player: EntityPlayer): Unit =

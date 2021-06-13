@@ -10,8 +10,8 @@ import li.cil.oc.api
 import li.cil.oc.api.driver.DeviceInfo
 import li.cil.oc.api.network._
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 
@@ -30,7 +30,7 @@ class PowerConverter extends traits.PowerAcceptor with traits.Environment with t
 
   override def getDeviceInfo: util.Map[String, String] = deviceInfo
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override protected def hasConnector(side: EnumFacing) = true
 
   override protected def connector(side: EnumFacing) = Option(node)

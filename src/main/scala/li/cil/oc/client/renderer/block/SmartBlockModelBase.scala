@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.Vec3d
-import org.lwjgl.util.vector.Vector3f
+import net.minecraft.client.renderer.Vector3f
 
 trait SmartBlockModelBase extends IBakedModel {
   override def getOverrides: ItemOverrideList = ItemOverrideList.NONE

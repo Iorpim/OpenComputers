@@ -8,12 +8,12 @@ import li.cil.oc.api.event.RobotRenderEvent
 import li.cil.oc.client.renderer.tileentity.RobotRenderer
 import li.cil.oc.util.RenderState
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.entity.Entity
 import net.minecraftforge.client.event.RenderPlayerEvent
-import net.minecraftforge.fml.common.eventhandler.EventPriority
+import net.minecraftforge.fml.common.Mod.EventBusSubscriberPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent
+import net.minecraftforge.event.TickEvent.ClientTickEvent
 
 import scala.collection.convert.WrapAsScala._
 import scala.collection.mutable

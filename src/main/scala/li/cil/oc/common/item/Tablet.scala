@@ -51,10 +51,10 @@ import net.minecraft.world.World
 import net.minecraftforge.event.world.WorldEvent
 import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent
-import net.minecraftforge.fml.common.gameevent.TickEvent.ServerTickEvent
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.event.TickEvent.ClientTickEvent
+import net.minecraftforge.event.TickEvent.ServerTickEvent
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 import scala.collection.convert.WrapAsScala._
@@ -103,7 +103,7 @@ class Tablet(val parent: Delegator) extends traits.Delegate with CustomModel wit
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   private def modelLocationFromState(running: Option[Boolean]) = {
     val suffix = running match {
       case Some(state) => if (state) "_on" else "_off"
@@ -112,7 +112,7 @@ class Tablet(val parent: Delegator) extends traits.Delegate with CustomModel wit
     new ModelResourceLocation(Settings.resourceDomain + ":" + Constants.ItemName.Tablet + suffix, "inventory")
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getModelLocation(stack: ItemStack): ModelResourceLocation = {
     modelLocationFromState(Tablet.Client.getWeak(stack) match {
       case Some(tablet: TabletWrapper) => Some(tablet.data.isRunning)
@@ -120,7 +120,7 @@ class Tablet(val parent: Delegator) extends traits.Delegate with CustomModel wit
     })
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def registerModelLocations(): Unit = {
     for (state <- Seq(None, Some(true), Some(false))) {
       val location = modelLocationFromState(state)

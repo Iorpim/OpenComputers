@@ -2,7 +2,7 @@ package li.cil.oc.common.tileentity.traits.power
 /* TODO IC2 Classic
 
 import cpw.mods.fml.common.Optional
-import cpw.mods.fml.common.eventhandler.Event
+import cpw.mods.fml.common.Mod.EventBusSubscriber
 import ic2classic.api.Direction
 import li.cil.oc.OpenComputers
 import li.cil.oc.Settings

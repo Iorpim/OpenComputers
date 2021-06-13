@@ -25,8 +25,8 @@ import net.minecraft.util._
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 abstract class SimpleBlock(material: Material = Material.IRON) extends BlockContainer(material) {
   setHardness(2f)
@@ -41,7 +41,7 @@ abstract class SimpleBlock(material: Material = Material.IRON) extends BlockCont
 
   override def createNewTileEntity(world: World, meta: Int): TileEntity = null
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def shouldSideBeRendered(state: IBlockState, world: IBlockAccess, pos: BlockPos, side: EnumFacing): Boolean = {
     val bounds = getBoundingBox(state, world, pos)
     (side == EnumFacing.DOWN && bounds.minY > 0) ||
@@ -59,7 +59,7 @@ abstract class SimpleBlock(material: Material = Material.IRON) extends BlockCont
 
   override def getRenderType(state: IBlockState): EnumBlockRenderType = EnumBlockRenderType.MODEL
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   def preItemRender(metadata: Int) {}
 
   // ----------------------------------------------------------------------- //
@@ -68,7 +68,7 @@ abstract class SimpleBlock(material: Material = Material.IRON) extends BlockCont
 
   def rarity(stack: ItemStack) = EnumRarity.COMMON
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   def addInformation(metadata: Int, stack: ItemStack, world: World, tooltip: util.List[String], flag: ITooltipFlag) {
     tooltipHead(metadata, stack, world, tooltip, flag)
     tooltipBody(metadata, stack, world, tooltip, flag)

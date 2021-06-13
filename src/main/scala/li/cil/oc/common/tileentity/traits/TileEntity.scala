@@ -12,8 +12,8 @@ import net.minecraft.network.NetworkManager
 import net.minecraft.network.play.server.SPacketUpdateTileEntity
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait TileEntity extends net.minecraft.tileentity.TileEntity {
   private final val IsServerDataTag = Settings.namespace + "isServerData"
@@ -76,7 +76,7 @@ trait TileEntity extends net.minecraft.tileentity.TileEntity {
     super.writeToNBT(nbt)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   def readFromNBTForClient(nbt: NBTTagCompound) {}
 
   def writeToNBTForClient(nbt: NBTTagCompound): Unit = {

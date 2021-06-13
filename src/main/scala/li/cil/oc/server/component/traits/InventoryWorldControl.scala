@@ -14,7 +14,7 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.entity.item.ItemTossEvent
-import net.minecraftforge.fml.common.eventhandler.Event.Result
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Result
 
 import scala.collection.convert.WrapAsScala._
 

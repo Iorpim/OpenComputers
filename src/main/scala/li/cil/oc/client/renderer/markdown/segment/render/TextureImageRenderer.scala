@@ -6,7 +6,7 @@ import javax.imageio.ImageIO
 import li.cil.oc.api.manual.ImageRenderer
 import li.cil.oc.client.Textures
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.client.renderer.texture.AbstractTexture
 import net.minecraft.client.renderer.texture.TextureUtil
 import net.minecraft.client.resources.IResourceManager

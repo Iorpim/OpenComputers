@@ -3,8 +3,8 @@ package li.cil.oc.common.tileentity.traits
 import li.cil.oc.Settings
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 /**
   * @author Vexatos
@@ -37,7 +37,7 @@ trait OpenSides extends TileEntity {
     nbt.setByte(Settings.namespace + "openSides", compressSides)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     openSides = uncompressSides(nbt.getByte(Settings.namespace + "openSides"))

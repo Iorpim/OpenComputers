@@ -22,8 +22,8 @@ import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait Delegate {
   def parent: Delegator
@@ -80,7 +80,7 @@ trait Delegate {
 
   def displayName(stack: ItemStack): Option[String] = None
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   def tooltipLines(stack: ItemStack, world: World, tooltip: util.List[String], flag: ITooltipFlag) {
     if (tooltipName.isDefined) {
       tooltip.addAll(Tooltip.get(tooltipName.get, tooltipData: _*))

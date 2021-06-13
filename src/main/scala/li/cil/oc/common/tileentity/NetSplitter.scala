@@ -14,8 +14,8 @@ import net.minecraft.init.SoundEvents
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.SoundCategory
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 import scala.collection.mutable
@@ -63,7 +63,7 @@ class NetSplitter extends traits.Environment with traits.OpenSides with traits.R
 
   override def sidedNode(side: EnumFacing): Node = if (isSideOpen(side)) node else null
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing): Boolean = isSideOpen(side)
 
   // ----------------------------------------------------------------------- //
@@ -107,7 +107,7 @@ class NetSplitter extends traits.Environment with traits.OpenSides with traits.R
     nbt.setBoolean(IsInvertedTag, isInverted)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound): Unit = {
     super.readFromNBTForClient(nbt)
     isInverted = nbt.getBoolean(IsInvertedTag)

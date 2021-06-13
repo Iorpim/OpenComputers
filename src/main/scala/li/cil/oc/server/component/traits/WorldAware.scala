@@ -18,7 +18,7 @@ import net.minecraftforge.common.util.FakePlayerFactory
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fluids.FluidRegistry
-import net.minecraftforge.fml.common.eventhandler.Event.Result
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Result
 import net.minecraftforge.items.IItemHandler
 import net.minecraftforge.items.wrapper.InvWrapper
 

@@ -7,7 +7,7 @@ import li.cil.oc.util.OldScaledResolution
 import net.minecraft.client.gui.GuiScreen
 import net.minecraft.client.gui.GuiTextField
 import net.minecraft.client.gui.ScaledResolution
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import org.lwjgl.input.Keyboard
 
 class Waypoint(val waypoint: tileentity.Waypoint) extends GuiScreen {

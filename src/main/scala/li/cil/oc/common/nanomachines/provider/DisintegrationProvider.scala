@@ -19,7 +19,7 @@ import net.minecraft.world.World
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.util.FakePlayer
 import net.minecraftforge.event.entity.player.PlayerInteractEvent
-import net.minecraftforge.fml.common.eventhandler.Event
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 
 import scala.collection.mutable
 

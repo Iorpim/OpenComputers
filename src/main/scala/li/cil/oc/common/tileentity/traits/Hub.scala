@@ -9,8 +9,8 @@ import li.cil.oc.util.MovingAverage
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.util.Constants.NBT
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.mutable
 
@@ -54,7 +54,7 @@ trait Hub extends traits.Environment with SidedEnvironment with Tickable {
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing) = side != null
 
   override def sidedNode(side: EnumFacing) = if (side != null) plugs(side.ordinal).node else null

@@ -23,8 +23,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.AxisAlignedBB
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 
@@ -61,7 +61,7 @@ class Printer extends traits.Environment with traits.Inventory with traits.Rotat
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing): Boolean = side != EnumFacing.UP
 
   override def sidedNode(side: EnumFacing): ComponentConnector = if (side != EnumFacing.UP) node else null
@@ -342,7 +342,7 @@ class Printer extends traits.Environment with traits.Inventory with traits.Rotat
     nbt.setDouble(RemainingTag, requiredEnergy)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     data.load(nbt.getCompoundTag(DataTag))

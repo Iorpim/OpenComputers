@@ -26,7 +26,7 @@ import net.minecraft.world.WorldServer
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.common.util.FakePlayerFactory
 import net.minecraftforge.event.world.BlockEvent
-import net.minecraftforge.fml.common.eventhandler.Event
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 
 import scala.collection.convert.WrapAsJava._
 

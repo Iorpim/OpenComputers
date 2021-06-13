@@ -6,8 +6,8 @@ import li.cil.oc.server.PacketSender
 import li.cil.oc.util.Color
 import net.minecraft.item.EnumDyeColor
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait Colored extends TileEntity with internal.Colored {
   private var _color = 0
@@ -49,7 +49,7 @@ trait Colored extends TileEntity with internal.Colored {
     nbt.setInteger(RenderColorTag, _color)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     _color = nbt.getInteger(RenderColorTag)

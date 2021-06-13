@@ -5,8 +5,8 @@ import mezz.jei.api.gui.ITickTimer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Gui
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 /**
   * Used to simulate an animated texture.
@@ -21,10 +21,10 @@ class DrawableAnimatedIcon(resourceLocation: ResourceLocation, u: Int, v: Int, w
 
   override def getHeight: Int = height + paddingTop + paddingBottom
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def draw(minecraft: Minecraft): Unit = draw(minecraft, 0, 0)
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def draw(minecraft: Minecraft, xOffset: Int, yOffset: Int) {
     val animationValue = tickTimer.getValue
 

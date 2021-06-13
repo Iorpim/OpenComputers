@@ -14,8 +14,8 @@ import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Hologram(val tier: Int) extends SimpleBlock {
   val bounds = new AxisAlignedBB(0, 0, 0, 1, 0.5f, 1)
@@ -28,7 +28,7 @@ class Hologram(val tier: Int) extends SimpleBlock {
 
   override def isBlockSolid(world: IBlockAccess, pos: BlockPos, side: EnumFacing) = side == EnumFacing.DOWN
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def shouldSideBeRendered(state: IBlockState, world: IBlockAccess, pos: BlockPos, side: EnumFacing) = {
     super.shouldSideBeRendered(state, world, pos, side) || side == EnumFacing.UP
   }

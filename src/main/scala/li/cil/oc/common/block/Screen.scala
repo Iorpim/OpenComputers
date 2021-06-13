@@ -144,7 +144,7 @@ class Screen(val tier: Int) extends RedstoneAware {
 
   val emptyBB = new AxisAlignedBB(0, 0, 0, 0, 0, 0)
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getSelectedBoundingBox(state: IBlockState, worldIn: World, pos: BlockPos): AxisAlignedBB =
     if (!Minecraft.getMinecraft.player.isSneaking)
       emptyBB

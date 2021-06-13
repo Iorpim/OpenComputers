@@ -10,8 +10,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class FloppyDisk(val parent: Delegator) extends traits.Delegate with CustomModel with traits.FileSystemLike {
   // Necessary for anonymous subclasses used for loot disks.
@@ -19,12 +19,12 @@ class FloppyDisk(val parent: Delegator) extends traits.Delegate with CustomModel
 
   val kiloBytes = Settings.get.floppySize
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   private def modelLocationFromDyeName(name: String) = {
     new ModelResourceLocation(Settings.resourceDomain + ":" + Constants.ItemName.Floppy + "_" + name, "inventory")
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getModelLocation(stack: ItemStack): ModelResourceLocation = {
     val dyeIndex =
       if (stack.hasTagCompound && stack.getTagCompound.hasKey(Settings.namespace + "color"))
@@ -34,7 +34,7 @@ class FloppyDisk(val parent: Delegator) extends traits.Delegate with CustomModel
     modelLocationFromDyeName(Color.dyes(dyeIndex max 0 min 15))
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def registerModelLocations(): Unit = {
     for (dyeName <- Color.dyes) {
       val location = modelLocationFromDyeName(dyeName)

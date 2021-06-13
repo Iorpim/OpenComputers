@@ -36,7 +36,7 @@ class Rack extends RedstoneAware with traits.PowerAcceptor with traits.StateAwar
     }).withProperty(PropertyRotatable.Facing, getFacing(world, pos))
   }
 
-  //  @SideOnly(Side.CLIENT)
+  //  @OnlyIn(Dist.CLIENT)
   //  override def getMixedBrightnessForBlock(world: IBlockAccess, pos: BlockPos) = {
   //    if (pos.getY >= 0 && pos.getY < 256) world.getTileEntity(pos) match {
   //      case rack: tileentity.Rack =>

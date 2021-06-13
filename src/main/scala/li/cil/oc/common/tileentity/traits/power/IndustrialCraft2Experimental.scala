@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Optional
-import net.minecraftforge.fml.common.eventhandler.Event
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
 
 @Injectable.Interface(value = "ic2.api.energy.tile.IEnergySink", modid = Mods.IDs.IndustrialCraft2)
 trait IndustrialCraft2Experimental extends Common with IndustrialCraft2Common with traits.Tickable {

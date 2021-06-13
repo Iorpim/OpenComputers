@@ -4,7 +4,7 @@ import li.cil.oc.Settings
 import li.cil.oc.util.PackedColor
 import li.cil.oc.util.RenderState
 import li.cil.oc.util.TextBuffer
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import org.lwjgl.opengl.GL11
 
 /**

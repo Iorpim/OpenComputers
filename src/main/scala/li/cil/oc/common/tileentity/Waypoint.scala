@@ -10,8 +10,8 @@ import li.cil.oc.common.EventHandler
 import li.cil.oc.server.network.Waypoints
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.{EnumFacing, EnumParticleTypes}
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Waypoint extends traits.Environment with traits.Rotatable with traits.RedstoneAware with traits.Tickable {
   val node = api.Network.newNode(this, Visibility.Network).
@@ -74,7 +74,7 @@ class Waypoint extends traits.Environment with traits.Rotatable with traits.Reds
     nbt.setString(LabelTag, label)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound): Unit = {
     super.readFromNBTForClient(nbt)
     label = nbt.getString(LabelTag)

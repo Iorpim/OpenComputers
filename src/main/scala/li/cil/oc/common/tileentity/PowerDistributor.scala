@@ -7,8 +7,8 @@ import li.cil.oc.util.ExtendedNBT._
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.util.Constants.NBT
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class PowerDistributor extends traits.Environment with traits.PowerBalancer with traits.NotAnalyzable {
   val node = null
@@ -21,7 +21,7 @@ class PowerDistributor extends traits.Environment with traits.PowerBalancer with
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing) = true
 
   override def sidedNode(side: EnumFacing): Connector = nodes(side.ordinal)

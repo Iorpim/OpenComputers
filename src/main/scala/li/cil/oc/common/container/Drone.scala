@@ -6,8 +6,8 @@ import li.cil.oc.common.entity
 import net.minecraft.entity.player.InventoryPlayer
 import net.minecraft.inventory.IInventory
 import net.minecraft.item.ItemStack
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Drone(playerInventory: InventoryPlayer, drone: entity.Drone) extends Player(playerInventory, drone.mainInventory) {
   val deltaY = 0
@@ -25,7 +25,7 @@ class Drone(playerInventory: InventoryPlayer, drone: entity.Drone) extends Playe
   class InventorySlot(container: Player, inventory: IInventory, index: Int, x: Int, y: Int) extends StaticComponentSlot(container, inventory, index, x, y, common.Slot.Any, common.Tier.Any) {
     def isValid = (0 until drone.mainInventory.getSizeInventory).contains(getSlotIndex)
 
-    @SideOnly(Side.CLIENT) override
+    @OnlyIn(Dist.CLIENT) override
     def isEnabled = isValid && super.isEnabled
 
     override def getBackgroundLocation =

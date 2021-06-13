@@ -3,7 +3,7 @@ package li.cil.oc.client.renderer.tileentity
 import li.cil.oc.common.tileentity.Hologram
 import li.cil.oc.util.RenderState
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer
 
 object HologramRendererFallback extends TileEntitySpecialRenderer[Hologram] {

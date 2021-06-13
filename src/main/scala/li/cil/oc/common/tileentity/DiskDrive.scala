@@ -25,8 +25,8 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 
@@ -130,7 +130,7 @@ class DiskDrive extends traits.Environment with traits.ComponentInventory with t
 
   private final val DiskTag = Settings.namespace + "disk"
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     if (nbt.hasKey(DiskTag)) {

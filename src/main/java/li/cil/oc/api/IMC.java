@@ -1,9 +1,9 @@
 package li.cil.oc.api;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.nbt.StringNBT;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -114,7 +114,7 @@ public final class IMC {
      *                       for the third component slot. Up to nine.
      */
     public static void registerAssemblerTemplate(final String name, final String select, final String validate, final String assemble, final Class host, final int[] containerTiers, final int[] upgradeTiers, final Iterable<Pair<String, Integer>> componentSlots) {
-        final NBTTagCompound nbt = new NBTTagCompound();
+        final CompoundNBT nbt = new CompoundNBT();
         if (name != null) {
             nbt.setString("name", name);
         }
@@ -125,10 +125,10 @@ public final class IMC {
             nbt.setString("hostClass", host.getName());
         }
 
-        final NBTTagList containersNbt = new NBTTagList();
+        final ListNBT containersNbt = new ListNBT();
         if (containerTiers != null) {
             for (int tier : containerTiers) {
-                final NBTTagCompound slotNbt = new NBTTagCompound();
+                final CompoundNBT slotNbt = new CompoundNBT();
                 slotNbt.setInteger("tier", tier);
                 containersNbt.appendTag(slotNbt);
             }
@@ -137,10 +137,10 @@ public final class IMC {
             nbt.setTag("containerSlots", containersNbt);
         }
 
-        final NBTTagList upgradesNbt = new NBTTagList();
+        final ListNBT upgradesNbt = new ListNBT();
         if (upgradeTiers != null) {
             for (int tier : upgradeTiers) {
-                final NBTTagCompound slotNbt = new NBTTagCompound();
+                final CompoundNBT slotNbt = new CompoundNBT();
                 slotNbt.setInteger("tier", tier);
                 upgradesNbt.appendTag(slotNbt);
             }
@@ -149,13 +149,13 @@ public final class IMC {
             nbt.setTag("upgradeSlots", upgradesNbt);
         }
 
-        final NBTTagList componentsNbt = new NBTTagList();
+        final ListNBT componentsNbt = new ListNBT();
         if (componentSlots != null) {
             for (Pair<String, Integer> slot : componentSlots) {
                 if (slot == null) {
-                    componentsNbt.appendTag(new NBTTagCompound());
+                    componentsNbt.appendTag(new CompoundNBT());
                 } else {
-                    final NBTTagCompound slotNbt = new NBTTagCompound();
+                    final CompoundNBT slotNbt = new CompoundNBT();
                     slotNbt.setString("type", slot.getLeft());
                     slotNbt.setInteger("tier", slot.getRight());
                     componentsNbt.appendTag(slotNbt);
@@ -203,7 +203,7 @@ public final class IMC {
      *                    ingredients from an item.
      */
     public static void registerDisassemblerTemplate(final String name, final String select, final String disassemble) {
-        final NBTTagCompound nbt = new NBTTagCompound();
+        final CompoundNBT nbt = new CompoundNBT();
         if (name != null) {
             nbt.setString("name", name);
         }
@@ -307,7 +307,7 @@ public final class IMC {
      * @param charge    the callback to register for charging items.
      */
     public static void registerItemCharge(final String name, final String canCharge, final String charge) {
-        final NBTTagCompound nbt = new NBTTagCompound();
+        final CompoundNBT nbt = new CompoundNBT();
         nbt.setString("name", name);
         nbt.setString("canCharge", canCharge);
         nbt.setString("charge", charge);
@@ -367,10 +367,10 @@ public final class IMC {
      * @param stack the item stack representing the blacklisted component.
      */
     public static void blacklistHost(final String name, final Class host, final ItemStack stack) {
-        final NBTTagCompound nbt = new NBTTagCompound();
+        final CompoundNBT nbt = new CompoundNBT();
         nbt.setString("name", name);
         nbt.setString("host", host.getName());
-        final NBTTagCompound stackNbt = new NBTTagCompound();
+        final CompoundNBT stackNbt = new CompoundNBT();
         stack.writeToNBT(stackNbt);
         nbt.setTag("item", stackNbt);
         FMLInterModComms.sendMessage(MOD_ID, BLACKLIST_HOST, nbt);
@@ -401,13 +401,13 @@ public final class IMC {
      * @param architectures the names of the architectures this entry applies to.
      */
     public static void registerProgramDiskLabel(final String programName, final String diskLabel, final String... architectures) {
-        final NBTTagCompound nbt = new NBTTagCompound();
+        final CompoundNBT nbt = new CompoundNBT();
         nbt.setString("program", programName);
         nbt.setString("label", diskLabel);
         if (architectures != null && architectures.length > 0) {
-            final NBTTagList architecturesNbt = new NBTTagList();
+            final ListNBT architecturesNbt = new ListNBT();
             for (final String architecture : architectures) {
-                architecturesNbt.appendTag(new NBTTagString(architecture));
+                architecturesNbt.appendTag(new StringNBT(architecture));
             }
             nbt.setTag("architectures", architecturesNbt);
         }

@@ -18,8 +18,8 @@ import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.Vec3d
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 import scala.collection.mutable
@@ -130,7 +130,7 @@ class Hologram(var tier: Int) extends traits.Environment with SidedEnvironment w
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing) = toLocal(side) == EnumFacing.DOWN
 
   override def sidedNode(side: EnumFacing) = if (toLocal(side) == EnumFacing.DOWN) node else null
@@ -518,7 +518,7 @@ class Hologram(var tier: Int) extends traits.Environment with SidedEnvironment w
     nbt.setFloat(RotationSpeedZTag, rotationSpeedZ)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     nbt.getIntArray(VolumeTag).copyToArray(volume)

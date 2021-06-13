@@ -8,7 +8,7 @@ import li.cil.oc.common.inventory.ServerInventory
 import li.cil.oc.common.tileentity
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiButton
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.entity.player.InventoryPlayer
 
 import scala.collection.convert.WrapAsJava.asJavaCollection

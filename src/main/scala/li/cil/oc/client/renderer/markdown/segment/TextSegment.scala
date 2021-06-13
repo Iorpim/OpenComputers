@@ -2,7 +2,7 @@ package li.cil.oc.client.renderer.markdown.segment
 
 import li.cil.oc.client.renderer.markdown.Document
 import net.minecraft.client.gui.FontRenderer
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import org.lwjgl.opengl.GL11
 
 import scala.collection.mutable

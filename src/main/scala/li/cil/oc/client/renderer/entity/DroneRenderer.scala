@@ -4,7 +4,7 @@ import li.cil.oc.client.Textures
 import li.cil.oc.common.entity.Drone
 import li.cil.oc.util.RenderState
 import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import net.minecraft.client.renderer.entity.Render
 
 object DroneRenderer extends Render[Drone](Minecraft.getMinecraft.getRenderManager) {

@@ -6,8 +6,8 @@ import net.minecraft.inventory.IInventory
 import net.minecraft.inventory.Slot
 import net.minecraft.item.ItemStack
 import net.minecraft.util.ResourceLocation
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsScala._
 
@@ -26,7 +26,7 @@ abstract class ComponentSlot(inventory: IInventory, index: Int, x: Int, y: Int) 
 
   def hasBackground = backgroundLocation != null
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def isEnabled = slot != common.Slot.None && tier != common.Tier.None && super.isEnabled
 
   override def isItemValid(stack: ItemStack) = inventory.isItemValidForSlot(getSlotIndex, stack)

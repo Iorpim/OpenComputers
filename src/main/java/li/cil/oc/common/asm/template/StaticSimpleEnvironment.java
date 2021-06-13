@@ -7,7 +7,7 @@ import li.cil.oc.api.network.Node;
 import li.cil.oc.api.network.Visibility;
 import li.cil.oc.common.asm.SimpleComponentTickHandler;
 import li.cil.oc.util.SideTracker;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 
 import java.util.HashMap;
@@ -70,7 +70,7 @@ public final class StaticSimpleEnvironment {
         }
     }
 
-    public static void readFromNBT(final SimpleComponentImpl self, NBTTagCompound nbt) {
+    public static void readFromNBT(final SimpleComponentImpl self, CompoundNBT nbt) {
         self.readFromNBT_OpenComputers(nbt);
         final Node node = node(self);
         if (node != null) {
@@ -78,11 +78,11 @@ public final class StaticSimpleEnvironment {
         }
     }
 
-    public static NBTTagCompound writeToNBT(final SimpleComponentImpl self, NBTTagCompound nbt) {
+    public static CompoundNBT writeToNBT(final SimpleComponentImpl self, CompoundNBT nbt) {
         nbt = self.writeToNBT_OpenComputers(nbt);
         final Node node = node(self);
         if (node != null) {
-            final NBTTagCompound nodeNbt = new NBTTagCompound();
+            final CompoundNBT nodeNbt = new CompoundNBT();
             node.save(nodeNbt);
             nbt.setTag("oc:node", nodeNbt);
         }

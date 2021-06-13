@@ -3,7 +3,7 @@ package li.cil.oc.api.prefab;
 import li.cil.oc.api.network.ManagedEnvironment;
 import li.cil.oc.api.network.Message;
 import li.cil.oc.api.network.Node;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.CompoundNBT;
 
 /**
  * Simple base implementation of the <tt>ManagedEnvironment</tt> interface, so
@@ -46,14 +46,14 @@ public abstract class AbstractManagedEnvironment implements ManagedEnvironment {
     }
 
     @Override
-    public void load(final NBTTagCompound nbt) {
+    public void load(final CompoundNBT nbt) {
         if (node() != null) {
             node().load(nbt.getCompoundTag(NODE_TAG));
         }
     }
 
     @Override
-    public void save(final NBTTagCompound nbt) {
+    public void save(final CompoundNBT nbt) {
         if (node() != null) {
             // Force joining a network when saving and we're not in one yet, so that
             // the address is embedded in the saved data that gets sent to the client,
@@ -62,13 +62,13 @@ public abstract class AbstractManagedEnvironment implements ManagedEnvironment {
             if (node().address() == null) {
                 li.cil.oc.api.Network.joinNewNetwork(node());
 
-                final NBTTagCompound nodeTag = new NBTTagCompound();
+                final CompoundNBT nodeTag = new CompoundNBT();
                 node().save(nodeTag);
                 nbt.setTag(NODE_TAG, nodeTag);
 
                 node().remove();
             } else {
-                final NBTTagCompound nodeTag = new NBTTagCompound();
+                final CompoundNBT nodeTag = new CompoundNBT();
                 node().save(nodeTag);
                 nbt.setTag(NODE_TAG, nodeTag);
             }

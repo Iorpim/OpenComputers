@@ -4,11 +4,11 @@ import li.cil.oc.Settings
 import li.cil.oc.api.network.Connector
 import li.cil.oc.common.tileentity.traits.TileEntity
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait Common extends TileEntity {
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   protected def hasConnector(side: EnumFacing) = false
 
   protected def connector(side: EnumFacing): Option[Connector] = None

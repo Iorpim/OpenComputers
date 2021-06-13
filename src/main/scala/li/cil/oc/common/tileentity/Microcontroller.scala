@@ -25,8 +25,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.common.util.Constants.NBT
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 
@@ -67,12 +67,12 @@ class Microcontroller extends traits.PowerAcceptor with traits.Hub with traits.C
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing): Boolean = side != facing
 
   override def sidedNode(side: EnumFacing): Node = if (side != facing) super.sidedNode(side) else null
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override protected def hasConnector(side: EnumFacing): Boolean = side != facing
 
   override protected def connector(side: EnumFacing) = Option(if (side != facing) snooperNode else null)
@@ -234,7 +234,7 @@ class Microcontroller extends traits.PowerAcceptor with traits.Hub with traits.C
     nbt.setNewCompoundTag(SnooperTag, snooperNode.save)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     info.load(nbt.getCompoundTag(InfoTag))
     super.readFromNBTForClient(nbt)

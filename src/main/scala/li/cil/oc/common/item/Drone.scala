@@ -17,18 +17,18 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.util.EnumFacing
 import net.minecraftforge.client.event.ModelBakeEvent
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Drone(val parent: Delegator) extends traits.Delegate with CustomModel {
   ItemBlacklist.hide(this)
 
   showInItemList = false
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getModelLocation(stack: ItemStack) = new ModelResourceLocation(Settings.resourceDomain + ":" + Constants.ItemName.Drone, "inventory")
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def bakeModels(bakeEvent: ModelBakeEvent): Unit = {
     bakeEvent.getModelRegistry.putObject(getModelLocation(createItemStack()), DroneModel)
   }

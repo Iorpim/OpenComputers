@@ -3,8 +3,8 @@ package li.cil.oc.common.tileentity.traits
 import li.cil.oc.Settings
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 /**
  * Like Rotatable, but stores the rotation information in the TE's NBT instead
@@ -51,7 +51,7 @@ trait RotatableTile extends Rotatable {
     nbt.setInteger(YawTag, yaw.ordinal)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     pitch = EnumFacing.getFront(nbt.getInteger(PitchTag))

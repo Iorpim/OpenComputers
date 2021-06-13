@@ -6,8 +6,8 @@ import li.cil.oc.api
 import li.cil.oc.api.internal
 import li.cil.oc.api.network.Node
 import net.minecraft.nbt.NBTTagCompound
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait TextBuffer extends Environment with Tickable {
   lazy val buffer: internal.TextBuffer = {
@@ -42,7 +42,7 @@ trait TextBuffer extends Environment with Tickable {
     buffer.save(nbt)
   }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     buffer.load(nbt)

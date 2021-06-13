@@ -20,8 +20,8 @@ import li.cil.oc.util.StackOption._
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.convert.WrapAsJava._
 
@@ -48,12 +48,12 @@ class Assembler extends traits.Environment with traits.PowerAcceptor with traits
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing) = side != EnumFacing.UP
 
   override def sidedNode(side: EnumFacing) = if (side != EnumFacing.UP) node else null
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override protected def hasConnector(side: EnumFacing) = canConnect(side)
 
   override protected def connector(side: EnumFacing) = Option(if (side != EnumFacing.UP) node else null)
@@ -164,7 +164,7 @@ class Assembler extends traits.Environment with traits.PowerAcceptor with traits
     nbt.setDouble(RemainingTag, requiredEnergy)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     requiredEnergy = nbt.getDouble(RemainingTag)

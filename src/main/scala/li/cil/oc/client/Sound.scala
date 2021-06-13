@@ -22,7 +22,7 @@ import net.minecraftforge.event.world.WorldEvent
 import net.minecraftforge.fml.client.FMLClientHandler
 import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
-import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent
+import net.minecraftforge.event.TickEvent.ClientTickEvent
 import paulscode.sound.SoundSystemConfig
 
 import scala.collection.mutable

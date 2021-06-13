@@ -17,8 +17,8 @@ import li.cil.oc.server.{PacketSender => ServerPacketSender}
 import net.minecraftforge.common.capabilities.Capability
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler
 import net.minecraftforge.fluids.capability.IFluidHandler
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 import net.minecraft.entity.Entity
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.inventory.ISidedInventory
@@ -188,7 +188,7 @@ class RobotProxy(val robot: Robot) extends traits.Computer with traits.PowerInfo
 
   override def load(nbt: NBTTagCompound): Unit = robot.load(nbt)
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def readFromNBTForClient(nbt: NBTTagCompound): Unit = robot.readFromNBTForClient(nbt)
 
   override def writeToNBTForClient(nbt: NBTTagCompound): Unit = robot.writeToNBTForClient(nbt)

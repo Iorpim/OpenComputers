@@ -7,12 +7,12 @@ import net.minecraft.client.util.ITooltipFlag
 import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 trait ItemTier extends Delegate {
   self: Delegate =>
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def tooltipLines(stack: ItemStack, world: World, tooltip: util.List[String], flag: ITooltipFlag) {
     super.tooltipLines(stack, world, tooltip, flag)
     if (flag.isAdvanced) {

@@ -18,8 +18,8 @@ import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Raid extends traits.Environment with traits.Inventory with traits.Rotatable with Analyzable {
   val node = api.Network.newNode(this, Visibility.None).create()
@@ -140,7 +140,7 @@ class Raid extends traits.Environment with traits.Inventory with traits.Rotatabl
     label.save(nbt)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     super.readFromNBTForClient(nbt)
     nbt.getByteArray(PresenceTag).

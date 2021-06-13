@@ -16,8 +16,8 @@ import net.minecraft.entity.projectile.EntityArrow
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.AxisAlignedBB
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 import scala.collection.mutable
 import scala.language.postfixOps
@@ -63,7 +63,7 @@ class Screen(var tier: Int) extends traits.TextBuffer with SidedEnvironment with
 
   setColor(Color.rgbValues(Color.byTier(tier)))
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def canConnect(side: EnumFacing) = side != facing
 
   // Allow connections from front for keyboards, and keyboards only...
@@ -305,7 +305,7 @@ class Screen(var tier: Int) extends traits.TextBuffer with SidedEnvironment with
     nbt.setBoolean(InvertTouchModeTag, invertTouchMode)
   }
 
-  @SideOnly(Side.CLIENT) override
+  @OnlyIn(Dist.CLIENT) override
   def readFromNBTForClient(nbt: NBTTagCompound) {
     tier = nbt.getByte(TierTag) max 0 min 2
     super.readFromNBTForClient(nbt)
@@ -320,7 +320,7 @@ class Screen(var tier: Int) extends traits.TextBuffer with SidedEnvironment with
 
   // ----------------------------------------------------------------------- //
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getRenderBoundingBox =
     if ((width == 1 && height == 1) || !isOrigin) super.getRenderBoundingBox
     else cachedBounds match {
@@ -338,7 +338,7 @@ class Screen(var tier: Int) extends traits.TextBuffer with SidedEnvironment with
         b
     }
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def getMaxRenderDistanceSquared = if (isOrigin) super.getMaxRenderDistanceSquared else 0
 
   // ----------------------------------------------------------------------- //

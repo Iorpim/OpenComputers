@@ -16,13 +16,13 @@ import net.minecraft.util.ActionResult
 import net.minecraft.util.EnumActionResult
 import net.minecraft.util.EnumHand
 import net.minecraft.world.World
-import net.minecraftforge.fml.relauncher.Side
-import net.minecraftforge.fml.relauncher.SideOnly
+import net.minecraftforge.api.distmarker.Dist
+import net.minecraftforge.api.distmarker.OnlyIn
 
 class Nanomachines(val parent: Delegator) extends traits.Delegate {
   override def rarity(stack: ItemStack): EnumRarity = EnumRarity.UNCOMMON
 
-  @SideOnly(Side.CLIENT)
+  @OnlyIn(Dist.CLIENT)
   override def tooltipLines(stack: ItemStack, world: World, tooltip: util.List[String], flag: ITooltipFlag): Unit = {
     super.tooltipLines(stack, world, tooltip, flag)
     if (stack.hasTagCompound) {

@@ -10,7 +10,7 @@ import li.cil.oc.client.{Manual => ManualAPI}
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiButton
 import net.minecraft.client.gui.GuiScreen
-import net.minecraft.client.renderer.GlStateManager
+import com.mojang.blaze3d.platform.GlStateManager
 import org.lwjgl.input.Mouse
 
 import scala.collection.convert.WrapAsJava._
